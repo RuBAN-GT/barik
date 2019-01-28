@@ -1,0 +1,14 @@
+# Editors
+.idea
+.vscode
+
+# Env
+.env
+.tool-versions
+
+# Tmp
+tmp
+!tmp/.keep
+
+# Capybara
+./capybara-*
