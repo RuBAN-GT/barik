@@ -39,6 +39,8 @@ module Barik
 
         form_group = adapter.find('form#yw0')
 
+        form_group.fill_in id: 'UsersRates_episodes', with: 0
+
         status_group = form_group.find('.s6.input-field')
         status_group.find('input').click
         status_group.find('li:last-of-type').click
