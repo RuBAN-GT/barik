@@ -38,12 +38,17 @@ module Barik
         item.first('[data-name=pos]').click
 
         form_group = adapter.find('form#yw0')
+        form_group.find('#UsersRates_episodes').tap do |input|
+          current_value = input[:value].to_i || 0
+          max_value     = input[:max].to_i || 0
+          fill_value    = current_value == max_value ? max_value - 1 : max_value
 
-        form_group.fill_in id: 'UsersRates_episodes', with: 0
-
-        status_group = form_group.find('.s6.input-field')
-        status_group.find('input').click
-        status_group.find('li:last-of-type').click
+          input.fill_in with: fill_value
+        end
+        form_group.find('.s6.input-field').tap do |status_group|
+          status_group.find('input').click
+          status_group.find('li:last-of-type').click
+        end
 
         form_group.click_button 'Сохранить'
       end
